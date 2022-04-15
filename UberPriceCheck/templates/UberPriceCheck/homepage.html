@@ -1,14 +1,27 @@
 {% extends "UberPriceCheck/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 <div class="content-section">
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            {{ form }}
+            <legend class="border-bottom mb-4">Save Today!</legend>
+            {{ form | crispy }}
+            <p>Value: <span id="demo"></span></p>
         </fieldset>
         <div class="form-group">
             <button class="btn btn-outline-info" type="submit">Submit</button>
         </div>
     </form>
 </div>
+
+<script>
+    var slider = document.getElementById("myDistance");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+    
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+</script> 
 {% endblock content %}
