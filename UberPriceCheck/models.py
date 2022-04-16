@@ -9,9 +9,8 @@ from geopy.geocoders import Nominatim
 class PriceEstimate(models.Model):
     display_name = models.CharField(max_length=20)
     distance = models.FloatField()
-    high_estimate = models.FloatField()
-    low_estimate = models.FloatField()
-    estimate = models.CharField(max_length=20)
+    estimate = models.FloatField()
+    address = models.CharField(max_length=128)
 
 
 class InputAddress(models.Model):
@@ -25,4 +24,6 @@ class InputAddress(models.Model):
         # TODO: Check for invalid location error check
         locator = Nominatim(user_agent="Uber_Price_Comparison")
         location = locator.geocode(self.address + " " + self.city + " " + self.state + " " + self.zip_code)
+        print(location.latitude)
+        print(location.longitude)
         return list([location.latitude, location.longitude])
