@@ -22,6 +22,7 @@ class InputAddress(models.Model):
     distance = models.IntegerField()
 
     def get_Coordinates(self):
+        # TODO: Check for invalid location error check
         locator = Nominatim(user_agent="Uber_Price_Comparison")
         location = locator.geocode(self.address + " " + self.city + " " + self.state + " " + self.zip_code)
         return list([location.latitude, location.longitude])
