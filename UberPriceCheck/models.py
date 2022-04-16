@@ -1,6 +1,8 @@
 from django.db import models
 from uber_rides.session import session
 from uber_rides.client import UberRidesClient
+import geopandas
+import geopy
 
 # Create your models here.
 
@@ -19,5 +21,5 @@ class InputAddress(models.Model):
 	address = models.CharField()
 	city = models.CharField()
 	state = models.CharField()
-	zip_code = models.IntField()
-	distance = models.IntField()
+	zip_code = models.IntegerField()
+	distance = models.IntegerField()
