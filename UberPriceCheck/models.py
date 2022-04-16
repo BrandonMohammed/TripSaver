@@ -7,17 +7,17 @@ from geopy.geocoders import Nominatim
 # Create your models here.
 
 class PriceEstimate(models.Model):
-    display_name = models.CharField()
+    display_name = models.CharField(max_length=20)
     distance = models.FloatField()
     high_estimate = models.FloatField()
     low_estimate = models.FloatField()
-    estimate = models.CharField()
+    estimate = models.CharField(max_length=20)
 
 
 class InputAddress(models.Model):
-    address = models.CharField()
-    city = models.CharField()
-    state = models.CharField()
+    address = models.CharField(max_length=50)
+    city = models.CharField(max_length=20)
+    state = models.CharField(max_length=20)
     zip_code = models.IntegerField()
     distance = models.IntegerField()
 
