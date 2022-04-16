@@ -2,4 +2,6 @@ asgiref==3.5.0
 backports.zoneinfo==0.2.1
 Django==4.0.4
 django-crispy-forms==1.14.0
+django-localflavor==3.1
+python-stdnum==1.17
 sqlparse==0.4.2

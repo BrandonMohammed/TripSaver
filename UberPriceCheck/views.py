@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import InputForm
+from localflavor.us.us_states import US_STATES
 
 def home(request):
     if request.method == 'POST':
