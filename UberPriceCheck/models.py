@@ -9,7 +9,8 @@ from uber_rides.client import UberRidesClient
 # client = UberRidesClient(session)
 
 class PriceEstimate(models.Model):
-	start_latitude = models.FloatField()
-	start_longitude = models.FloatField()
-	end_latitute = modeld.FloatField()
-	end_longitude = models.FloatField()
+	display_name = models.CharField()
+	distance = models.FloatFied()
+	high_estimate = models.FloatField()
+	low_estimate = models.FloatField()
+	estimate = modeld.CharField()
