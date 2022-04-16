@@ -14,3 +14,10 @@ class PriceEstimate(models.Model):
 	high_estimate = models.FloatField()
 	low_estimate = models.FloatField()
 	estimate = modeld.CharField()
+
+class InputAddress(models.Model):
+	address = models.CharField()
+	city = models.CharField()
+	state = models.CharField()
+	zip_code = models.IntField()
+	distance = models.IntField()
