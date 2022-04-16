@@ -15,10 +15,10 @@ class PriceEstimate(models.Model):
 
 
 class InputAddress(models.Model):
-    address = models.CharField(max_length=50)
-    city = models.CharField(max_length=20)
+    address = models.CharField(max_length=128)
+    city = models.CharField(max_length=64)
     state = models.CharField(max_length=20)
-    zip_code = models.IntegerField()
+    zip_code = models.CharField(max_length=5)
     distance = models.IntegerField()
 
     def get_Coordinates(self):
