@@ -6,6 +6,7 @@ import geopy.distance
 import geocoder
 from datetime import datetime
 import random
+import requests
 
 
 # Create your models here.
@@ -32,9 +33,10 @@ class InputAddress(models.Model):
 		# TODO: Check for invalid location error check
 		locator = Nominatim(user_agent="Uber_Price_Comparison")
 		location = locator.geocode(self.address + " " + self.city + " " + self.state + " " + self.zip_code)
-		print(location.latitude)
-		print(location.longitude)
-		return (location.latitude, location.longitude)
+		if (location):
+			return (location.latitude, location.longitude)
+		else:
+			return None
 
 	def BuildEstimateList(self):
 		estimate_list = []
@@ -42,6 +44,9 @@ class InputAddress(models.Model):
 
 		current_location = geocoder.ipinfo('me').latlng
 		dest_location = self.addrToLatLng()
+
+		if (not dest_location):
+			return estimate_list
 
 		for i in range(5):
 				lat = current_location[0]
@@ -71,8 +76,13 @@ class InputAddress(models.Model):
 				cost = price_per_miles * travel_distance * surge_price + base_price
 				price_est = PriceEstimate()
 				price_est.display_name = "UberX"
-				price_est.distance = travel_distance
-				price_est.estimate = cost
+				price_est.distance = float("{0:.2f}".format(travel_distance))
+				price_est.estimate = float("{0:.2f}".format(cost))
+
+				r = requests.get('https://api.uber.com/v1.2/estimates/price',
+								headers = {'Authorization': 'TOK:'},
+								params = {'start_latitude': lat, 'end_latitude': lon, 'start_longitude': dest_location[0], 'end_longitude': dest_location[1]})
+
 
 				price_est.LatLngToAddr(lat, lon)
 				estimate_list.append(price_est)

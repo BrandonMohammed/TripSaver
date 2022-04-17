@@ -4,10 +4,6 @@ from .forms import InputForm
 from localflavor.us.us_states import US_STATES
 from .models import InputAddress, PriceEstimate
 
-# from uber_rides.session import Session
-# from uber_rides.client import UberRidesClient
-
-
 def home(request):
 	if request.method == 'POST':
 		form = InputForm(request.POST)
@@ -21,22 +17,12 @@ def home(request):
 
 			est_list = input_address.BuildEstimateList()
 
-			for item in est_list:
-				print(item.address)
-				print(item.distance)
-				print(item.estimate)
+		context = {
+			'estimates': est_list,
+			'form': form
+		}	
 
-			# session = Session(server_token<TOKEN>)
-			# client = UberRidesClient(session)
-			# response = client.get_price_estimates(
-			#     start_latitude=?????,
-			#     start_longitude=?????,
-			#     end_latitude=dest_latitude,
-			#     end_longitude=dest_longitude
-			# )
-			# price_estimate = response.json.get('prices')
-
-			return redirect('UPC-home')
+		return render(request, 'UberPriceCheck/homepage.html', context)
 	else:
 		form = InputForm()
 		return render(request, 'UberPriceCheck/homepage.html', {'form': form})

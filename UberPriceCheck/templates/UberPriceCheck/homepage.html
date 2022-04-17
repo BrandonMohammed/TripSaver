@@ -21,7 +21,18 @@
     output.innerHTML = slider.value;
     
     slider.oninput = function() {
-      output.innerHTML = this.value;
+        output.innerHTML = this.value;
     }
 </script> 
 {% endblock content %}
+
+{% block estimates %}
+    {% for estimate in estimates %}
+    <div class="content-section">
+        <p>{{ estimate.display_name}}</p>
+        <p>{{ estimate.address }}</p>
+        <p>{{ estimate.distance }} miles</p>
+        <p>${{ estimate.estimate }}</p>
+    </div>
+    {%  endfor %}
+{% endblock estimates %}
