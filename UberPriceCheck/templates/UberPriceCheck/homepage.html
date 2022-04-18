@@ -22,16 +22,45 @@
 {% endblock content %}
 
 {% block estimates %}
+<script>
+    function getMap(){
+        var value = document.getElementById("address").innerHTML;
+        var address = document.getElementById("currentAddress").innerHTML;
+        var frame = getElementById("mapFrame")
+    }
+</script>
+
 <div class="list-group">
+    <p hidden="hidden" id="currentAddress">{{input_address}}</p>
     {% for estimate in estimates %}
-        <a href="#" class="list-group-item list-group-item-action">
+        <a href="#" class="list-group-item list-group-item-action" onclick="getMap()">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">{{ estimate.address }}</h5>
+              <h5 class="mb-1" id="address">{{ estimate.address }}</h5>
               <small>{{ estimate.display_name}}</small>
             </div>
             <p class="mb-1">${{ estimate.estimate }}</p>
             <small>{{ estimate.distance }} miles</small>
         </a>
-    {%  endfor %}
+    {% endfor %}
+
 </div>
 {% endblock estimates %}
+
+{% block map %}
+<div class="map" id="mapFrame">
+        <iframe
+          width="600"
+          height="450"
+          style="border:0"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyDeH51N2UWKt1xunMRHRY5JZiie1S5ZdeE
+          &origin={{input_address}}
+          &destination={{input_address}}
+          &avoid=tolls|highways">
+        </iframe>
+</div>
+{% endblock map %}
+
+
