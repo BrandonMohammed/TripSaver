@@ -88,5 +88,7 @@ class InputAddress(models.Model):
 				price_est.LatLngToAddr(lat, lon)
 				estimate_list.append(price_est)
 
+		estimate_list.sort(key = lambda x: x.estimate)
+
 		return estimate_list
 
