@@ -37,7 +37,7 @@ To install all dependencies input the following command in a terminal opened in 
  
  ## Known Problems
  
- Unfortinately, we were not given access to the Uber API for getting pricing data for this project. To work around this all of the pricing data is estimated based on a price per mile and surge price that we had to compute ourselves. Each ride was given a base price of $5.00 and each mile was given a price between $1.00-$2.00. We also implemented a surge pricing between the hours of 5:00P.M. and 5:00A.M. which multiplied the price by 2.5. 
+ Unfortunately, we were not given access to the Uber API for getting pricing data for this project. To work around this all of the pricing data is estimated based on a price per mile and surge price that we had to compute ourselves. Each ride was given a base price of $5.00 and each mile was given a price between $1.00-$2.00. We also implemented a surge pricing between the hours of 5:00P.M. and 5:00A.M. which multiplied the price by 2.5. 
  
  ---
  
