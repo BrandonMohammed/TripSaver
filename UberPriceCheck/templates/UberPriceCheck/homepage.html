@@ -27,12 +27,16 @@
 {% endblock content %}
 
 {% block estimates %}
+<div class="list-group">
     {% for estimate in estimates %}
-    <div class="content-section">
-        <p>{{ estimate.display_name}}</p>
-        <p>{{ estimate.address }}</p>
-        <p>{{ estimate.distance }} miles</p>
-        <p>${{ estimate.estimate }}</p>
-    </div>
+        <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{ estimate.address }}</h5>
+              <small>{{ estimate.display_name}}</small>
+            </div>
+            <p class="mb-1">${{ estimate.estimate }}</p>
+            <small>{{ estimate.distance }} miles</small>
+        </a>
     {%  endfor %}
+</div>
 {% endblock estimates %}
