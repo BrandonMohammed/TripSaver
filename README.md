@@ -25,13 +25,13 @@ This project is designed to help users save money when calling an Uber by determ
 ## Instructions
 
 This project utilizes the following external libraries:
-     - Django
-     - Local Flavor
-     - Geopy
-     - Geocoder
+- Django
+- Local Flavor
+- Geopy
+- Geocoder
      
 To install all dependencies input the following command in a terminal opened in the project folder:
-     - pip install -r requirements.txt
+- pip install -r requirements.txt
      
  ---
  
