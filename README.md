@@ -51,7 +51,7 @@ To install all dependencies input the following command in a terminal opened in 
      - wsgi.py
 
 - UberPriceCheck Package 
-     - __init__.py
+     - __init__.py : Django setup file
      - admin.py : Used for registering the models used
      - apps.py : Config for the application
      - forms.py : Used for the HTML forms for user input
@@ -62,7 +62,7 @@ To install all dependencies input the following command in a terminal opened in 
 
 - manage.py : Setup for Django
 - README.MD : Readme
-- requirements.txt : Contains all dependencies for project (see (#instructions))  
+- requirements.txt : Contains all dependencies for project (see instruction)  
 
      
 
