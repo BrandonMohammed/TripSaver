@@ -16,7 +16,8 @@ class PriceEstimate(models.Model):
 	distance = models.FloatField()
 	estimate = models.FloatField()
 	address = models.CharField(max_length=128)
-
+	latitude = models.CharField(max_length=25)
+	longitude = models.CharField(max_length=25)
 	def LatLngToAddr(self, lat, lng):
 		geolocator = Nominatim(user_agent="Uber_price_check")
 		self.address = geolocator.reverse(str(lat)+", " + str(lng))
@@ -86,6 +87,8 @@ class InputAddress(models.Model):
 
 
 				price_est.LatLngToAddr(lat, lon)
+				price_est.latitude = lat
+				price_est.longitude = lon
 				estimate_list.append(price_est)
 
 		estimate_list.sort(key = lambda x: x.estimate)
