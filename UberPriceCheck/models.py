@@ -43,6 +43,7 @@ class InputAddress(models.Model):
 		degrees = self.distance * (1 / 69)
 
 		current_location = geocoder.ipinfo('me').latlng
+		print(current_location)
 		dest_location = self.addrToLatLng()
 
 		if (not dest_location):
