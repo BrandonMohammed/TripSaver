@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import messages
 from .forms import InputForm
 from localflavor.us.us_states import US_STATES
 from .models import InputAddress, PriceEstimate
@@ -17,11 +18,15 @@ def home(request):
 
 			est_list = input_address.BuildEstimateList()
 
+			if (est_list):
+				messages.success(request, f'The address was valid!')
+			else:
+				messages.warning(request, f'The address was not valid!')
+
 		context = {
 			'estimates': est_list,
 			'form': form
 		}	
-
 		return render(request, 'UberPriceCheck/homepage.html', context)
 	else:
 		form = InputForm()
