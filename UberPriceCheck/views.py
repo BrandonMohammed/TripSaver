@@ -26,7 +26,7 @@ def home(request):
 		context = {
 			'estimates': est_list,
 			'form': form,
-			'input_address': input_address.address
+			'input_address': input_address.address + " " + input_address.city + " " + input_address.state + " " + input_address.zip_code
 		}
 		return render(request, 'UberPriceCheck/homepage.html', context)
 	else:

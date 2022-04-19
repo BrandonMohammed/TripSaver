@@ -30,7 +30,7 @@
 				</nav>
 		</header>
 
-		<main role="main" class="container mt-4 ml-4 mr-4">
+		<main role="main" class="container-fluid mt-4 ml-4 mr-4">
 				<div class="row">
 					{% if messages %}
 						{% for message in messages %}
@@ -41,15 +41,15 @@
 					{% endif %}
 				</div>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col">
 						{% block content %}
 						{% endblock content %}
 					</div>
-					<div class="col-md-6">
+					<div class="col">
 						{% block estimates %}
 						{% endblock estimates %}
 					</div>
-					<div class="col-md-6">
+					<div class="col">
 						{% block map %}
 						{% endblock map %}
 					</div>
@@ -57,6 +57,8 @@
 		</main>
 
 		<!-- Optional JavaScript -->
+		{% block scripts %}
+		{% endblock scripts %}
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
